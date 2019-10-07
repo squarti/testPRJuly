@@ -1,4 +1,4 @@
-# Task writes "some stuff" to a predefined path in the workspace git PipelineResource hi XinYi
+# Task writes "some stuff" to a predefined path in the workspace git PipelineResource hi bog
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
