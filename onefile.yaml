@@ -17,28 +17,7 @@ spec:
   - name: read-docs-old
     image: ubuntu
     command: ["/bin/bash"]
-    args: ['-c', 'ls -la /workspace/damnworkspace/docs/README.md'] # tests that targetpath works
-  - name: write-new-stuff
-    image: ubuntu
-    command: ['bash']
-    args: ['-c', 'ln -s /workspace/damnworkspace /workspace/output/workspace && echo some stuff > /workspace/output/workspace/stuff']
----
-# Reads a file from a predefined path in the workspace git PipelineResource
-apiVersion: tekton.dev/v1alpha1
-kind: Task
-metadata:
-  name: check-stuff-file-exists
-spec:
-  inputs:
-    resources:
-    - name: workspace
-      type: git
-      targetPath: newworkspace
-  steps:
-  - name: read
-    image: ubuntu
-    command: ["/bin/bash"]
-    args: ['-c', 'cat /workspace/newworkspace/stuff'] # tests that new targetpath and previous task output is dumped
+    args: ['-c', 'while true; echo "Hi - see you in a minute..."; sleep 1m; done'] # tests that targetpath works
 ---
 #The Output of the first Task (git resource) create-file is given as an `Input`
 # to the next `Task` check-stuff-file-exists using`from` clause.
@@ -62,14 +41,6 @@ spec:
       outputs:
       - name: workspace
         resource: source-repo
-  - name: then-check                 # 2.  check file exists
-    taskRef:
-      name: check-stuff-file-exists
-    resources:
-      inputs:
-      - name: workspace
-        resource: source-repo
-        from: [first-create-file]
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: TriggerTemplate
