@@ -38,7 +38,7 @@ spec:
   - name: read
     image: ubuntu
     command: ["/bin/bash"]
-    args: ['-c', 'while true; do echo "Hi - see you in a minute..."; sleep 10s; done'] # tests that new targetpath and previous task output is dumped
+    args: ['-c', 'for i in {3..1}; do   echo "COUNT: $i"; sleep 30s;done'] # tests that new targetpath and previous task output is dumped
 ---
 #The Output of the first Task (git resource) create-file is given as an `Input`
 # to the next `Task` check-stuff-file-exists using`from` clause.
