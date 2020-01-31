@@ -110,7 +110,7 @@ spec:
       spec:
         pipelineRef:
             name: output-pipeline
-        serviceAccount: 'default'
+        serviceAccountName: 'default'
         params:
         - name: message
           value: $(params.message)
