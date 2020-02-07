@@ -38,7 +38,6 @@ spec:
   params:
     - name: channel
       description: templatedefault
-      default: ''
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
