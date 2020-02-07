@@ -7,7 +7,7 @@ spec:
   inputs:
     params:
       - name: channel
-        default: ' '
+        default: 'taskdefault'
   steps:
   - name: read-docs-old
     image: ubuntu
@@ -21,7 +21,7 @@ metadata:
 spec:
   params:
   - name: channel
-    default: ' '
+    default: 'pipelinedefault'
   tasks:
   - name: first-create-file
     taskRef:
@@ -38,7 +38,7 @@ spec:
   params:
     - name: channel
       description: templatedefault
-      default: ' '
+      default: ''
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
